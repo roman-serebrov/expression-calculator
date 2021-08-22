@@ -428,7 +428,7 @@ describe("Hard", function() {
         expect(() => expressionCalculator(expr)).to.throw("TypeError: Division by zero.");
     });
     
-    it("Nested brackets test 29", function() {
+    it.only("Nested brackets test 29", function() {
         const expr = " (  96 / 83 - 53 - (  59 - 91 / 91 - 54  )  ) / (  75 + 4 / (  50 - 80 * 45 + 93 + 18  ) - 76 / 54  ) * 14 + 59 ";
         const result = 48.3764;
         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);

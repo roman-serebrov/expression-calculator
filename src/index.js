@@ -16,7 +16,6 @@ function expressionCalculator(expr) {
     tocenCode = tocenCode[0].split('')
   }
   for(let tocken of tocenCode) {
-    // console.log(tocken)
     if(!isNaN(tocken)) {
       stack.push({type: "Number", value: tocken})
     }else if(tocken in Operators) {
@@ -68,7 +67,6 @@ function expression(formula) {
     if(!isFinite(operator.calc(n1, n2))) {
       throw new Error("TypeError: Division by zero.")
     }
-      if(isNaN(res)) res = 0
       operands.push(Number(res))
     }
   }
