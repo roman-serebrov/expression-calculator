@@ -10,7 +10,8 @@ const Operators = {
 };
 
 function expressionCalculator(expr) {
-    let tocenCode = expr.replaceAll(" ", '&').split("&").filter(el => el !== '')
+    let tocenCode = expr.split(' ').filter(el => el !== '')
+    console.log(tocenCode)
   const stack = []
   if(tocenCode.length === 1) {
     tocenCode = tocenCode[0].split('')
@@ -29,7 +30,7 @@ function expressionCalculator(expr) {
   }
   let res = expression(stack)
   return res[0]
-  
+
 }
 function expression(formula) {
 
@@ -43,7 +44,7 @@ function expression(formula) {
         case "Function":
           expCalc(operands, operators, tocken.priority)
           operators.push(tocken)
-          break;  
+          break;
         case "leftBreckets":
           operators.push(tocken)
           break;
@@ -56,7 +57,7 @@ function expression(formula) {
     expCalc(operands,operators, 0)
     return operands
   }
-  
+
   function expCalc(operands, operators, minPr) {
     while(operators.length && (operators[operators.length - 1].priority >= minPr)){
       let operator = operators.pop()
@@ -64,10 +65,10 @@ function expression(formula) {
       let n1 = operands.pop()
       let res = operator.calc(n1, n2)
       if(isNaN(res)) throw new Error("ExpressionError: Brackets must be paired")
-    if(!isFinite(operator.calc(n1, n2))) {
+    if(!isFinite(res)) {
       throw new Error("TypeError: Division by zero.")
     }
-      operands.push(Number(res))
+    operands.push(Number(res))
     }
   }
   
